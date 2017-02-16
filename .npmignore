@@ -1,8 +1,6 @@
 .idea/
-example/
+src/
 node_modules/
 .gitignore
-index.html
 tsconfig.json
-webpack.config.js
 logo.png

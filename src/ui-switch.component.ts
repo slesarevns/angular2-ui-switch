@@ -1,15 +1,15 @@
-import { Component, Input, Output, EventEmitter, HostListener, forwardRef } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { Component, Input, Output, EventEmitter, HostListener, forwardRef } from "@angular/core";
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from "@angular/forms";
 
 const UI_SWITCH_CONTROL_VALUE_ACCESSOR: any = {
-  provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => UiSwitchComponent),
-  multi: true
+    provide    : NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => UiSwitchComponent),
+    multi      : true
 };
 
 @Component({
-  selector: 'ui-switch',
-  template: `
+               selector : 'ui-switch',
+               template : `
   <span class="switch" 
   [class.checked]="checked" 
   [class.disabled]="disabled"
@@ -23,7 +23,8 @@ const UI_SWITCH_CONTROL_VALUE_ACCESSOR: any = {
   </small>
   </span>
   `,
-  styles: [`
+               styles   : [
+                   `
     .switch {
     background: #f00;
     border: 1px solid #dfdfdf;
@@ -103,81 +104,81 @@ const UI_SWITCH_CONTROL_VALUE_ACCESSOR: any = {
     opacity: .50;
     cursor: not-allowed;
     }
-    `],
-  providers: [UI_SWITCH_CONTROL_VALUE_ACCESSOR]
-})
+    ` ],
+               providers: [ UI_SWITCH_CONTROL_VALUE_ACCESSOR ]
+           })
 export class UiSwitchComponent implements ControlValueAccessor {
-  private onTouchedCallback = (v: any) => {
-  };
-  private onChangeCallback = (v: any) => {
-  };
+    private onTouchedCallback = (v: any) => {
+    };
+    private onChangeCallback  = (v: any) => {
+    };
 
-  private _checked: boolean;
-  private _disabled: boolean;
-  private _reverse: boolean;
+    private _checked: boolean;
+    private _disabled: boolean;
+    private _reverse: boolean;
 
-  @Input() set checked(v: boolean) {
-    this._checked = v !== false;
-  }
-
-  get checked() {
-    return this._checked;
-  }
-
-  @Input() set disabled(v: boolean) {
-    this._disabled = v !== false;
-  };
-
-  get disabled() {
-    return this._disabled;
-  }
-
-  @Input() set reverse(v: boolean) {
-    this._reverse = v !== false;
-  };
-
-  get reverse() {
-    return this._reverse;
-  }
-
-  @Input() size: string = 'medium';
-  @Output() change = new EventEmitter<boolean>();
-  @Input() color: string = 'rgb(100, 189, 99)';
-  @Input() switchOffColor: string = '';
-  @Input() switchColor: string = '#fff';
-  defaultBgColor: string = '#fff';
-  defaultBoColor: string = '#dfdfdf';
-
-  getColor(flag) {
-    if (flag === 'borderColor') return this.defaultBoColor;
-    if (flag === 'switchColor') {
-      if (this.reverse) return !this.checked ? this.switchColor : this.switchOffColor || this.switchColor;
-      return this.checked ? this.switchColor : this.switchOffColor || this.switchColor;
+    @Input() set checked(v: boolean) {
+        this._checked = v !== false;
     }
-    if (this.reverse)  return !this.checked ? this.color : this.defaultBgColor;
-    return this.checked ? this.color : this.defaultBgColor;
-  }
 
-  @HostListener('click')
-  onToggle() {
-    if (this.disabled) return;
-    this.checked = !this.checked;
-    this.change.emit(this.checked);
-    this.onChangeCallback(this.checked);
-    this.onTouchedCallback(this.checked);
-  }
-
-  writeValue(obj: any): void {
-    if (obj !== this.checked) {
-      this.checked = !!obj;
+    get checked() {
+        return this._checked;
     }
-  }
 
-  registerOnChange(fn: any) {
-    this.onChangeCallback = fn;
-  }
+    @Input() set disabled(v: boolean) {
+        this._disabled = v !== false;
+    };
 
-  registerOnTouched(fn: any) {
-    this.onTouchedCallback = fn;
-  }
+    get disabled() {
+        return this._disabled;
+    }
+
+    @Input() set reverse(v: boolean) {
+        this._reverse = v !== false;
+    };
+
+    get reverse() {
+        return this._reverse;
+    }
+
+    @Input() size: string           = 'medium';
+    @Output() change                = new EventEmitter<boolean>();
+    @Input() color: string          = 'rgb(100, 189, 99)';
+    @Input() switchOffColor: string = '';
+    @Input() switchColor: string    = '#fff';
+             defaultBgColor: string = '#fff';
+             defaultBoColor: string = '#dfdfdf';
+
+    getColor(flag) {
+        if (flag === 'borderColor') return this.defaultBoColor;
+        if (flag === 'switchColor') {
+            if (this.reverse) return !this.checked ? this.switchColor : this.switchOffColor || this.switchColor;
+            return this.checked ? this.switchColor : this.switchOffColor || this.switchColor;
+        }
+        if (this.reverse)  return !this.checked ? this.color : this.defaultBgColor;
+        return this.checked ? this.color : this.defaultBgColor;
+    }
+
+    @HostListener('click')
+    onToggle() {
+        if (this.disabled) return;
+        this.checked = !this.checked;
+        this.change.emit(this.checked);
+        this.onChangeCallback(this.checked);
+        this.onTouchedCallback(this.checked);
+    }
+
+    writeValue(obj: any): void {
+        if (obj !== this.checked) {
+            this.checked = !!obj;
+        }
+    }
+
+    registerOnChange(fn: any) {
+        this.onChangeCallback = fn;
+    }
+
+    registerOnTouched(fn: any) {
+        this.onTouchedCallback = fn;
+    }
 }

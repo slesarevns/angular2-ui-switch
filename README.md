@@ -1,3 +1,9 @@
+###This is a fork of [angular2-ui-switch](https://github.com/yuyang041060120/angular2-ui-switch).
+
+New Features:
+- AOT ready
+- Updated to Angular 2.4.7
+
 # Description
 
 This is a simple iOS 7 style switch component for Angular2.
@@ -9,13 +15,13 @@ Inspired by [switchery](https://github.com/abpetkov/switchery) - in angular2.
 # Installation
 
 ```bash
-npm install angular2-ui-switch --save
+npm install ng2-ui-switch --save
 ```
 
 # Usage
 
 ```javascript
-import { UiSwitchModule } from 'angular2-ui-switch'
+import { UiSwitchModule } from '@youmesoft/ng2-ui-switch'
 import { AppComponent } from './app.component';
 
 @NgModule({

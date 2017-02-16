@@ -1,10 +1,2 @@
-import { NgModule } from '@angular/core';
-
-import { UiSwitchComponent } from './ui-switch.component';
-
-@NgModule({
-    declarations: [UiSwitchComponent],
-    exports: [UiSwitchComponent]
-})
-export class UiSwitchModule {
-}
+export { UiSwitchComponent } from './ui-switch.component';
+export { UiSwitchModule } from './ui-switch.module';
