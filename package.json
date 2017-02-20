@@ -1,6 +1,6 @@
 {
   "name": "ng2-ui-switch",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Angular2 switch button",
   "main": "dist/index.js",
   "dependencies": {},
